@@ -24,6 +24,7 @@ namespace Csharp_Picturegraphik
             {
 
                 result[y] = new char[_bitmap.Width];
+                
                 for (int x = 0; x < _bitmap.Width; x++)
                 {
                     //int mapIndex = (int)Map(_bitmap.GetPixel(x, y).G, 0, 255, 0, asciitable.Length - 1);

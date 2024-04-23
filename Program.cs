@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace Csharp_Picturegraphik
 {
     class Program
     {
         private const double Widse = 1.5;
+        private const int MAXWDTH =350;
 
         [STAThread]
         static void Main(string[] args)
@@ -36,9 +38,11 @@ namespace Csharp_Picturegraphik
 
                 foreach (var row in rows)
                 {
-                    Console.Write(row);
+                    Console.WriteLine(row);
+                    
 
                 }
+                File.WriteAllLines("img.txt",rows.Select(r=>new string(r)));
                 Console.SetCursorPosition(0,0);
 
                
@@ -46,10 +50,10 @@ namespace Csharp_Picturegraphik
         }
         private static Bitmap Resize(Bitmap bitmap)
         {
-            var MaxWidth = 350;
-            var NewHight = bitmap.Height / Widse * MaxWidth / bitmap.Width;
-            if (bitmap.Width > MaxWidth || bitmap.Height > NewHight)
-                bitmap = new Bitmap(bitmap, new Size(MaxWidth, (int)NewHight));
+           
+            var NewHight = bitmap.Height / Widse * MAXWDTH / bitmap.Width;
+            if (bitmap.Width > MAXWDTH || bitmap.Height > NewHight)
+                bitmap = new Bitmap(bitmap, new Size(MAXWDTH, (int)NewHight));
             return bitmap;
         }
     }
