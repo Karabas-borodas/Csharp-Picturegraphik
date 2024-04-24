@@ -12,12 +12,16 @@ namespace Csharp_Picturegraphik
     class Program
     {
         private const double Widse = 1.5;
-        private const int MAXWDTH =350;
+        private const int MAXWDTH =150;
 
         [STAThread]
         static void Main(string[] args)
         {
+            Console.BufferHeight = 600;
             
+            //Console.BackgroundColor = ConsoleColor.White;
+            //Console.ForegroundColor = ConsoleColor.Black;
+
             var openFileDialog = new OpenFileDialog
             {
                 Filter = "Images | *.bmp; *.png; *.jpg; *.JPEG "
@@ -38,11 +42,12 @@ namespace Csharp_Picturegraphik
 
                 foreach (var row in rows)
                 {
-                    Console.WriteLine(row);
+                    Console.WriteLine(row );
                     
 
                 }
-                File.WriteAllLines("img.txt",rows.Select(r=>new string(r)));
+                var rovsNegativ = convert.ConvertRev();
+                File.WriteAllLines("img.txt", rovsNegativ.Select(r=>new string(r)));
                 Console.SetCursorPosition(0,0);
 
                

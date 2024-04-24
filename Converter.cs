@@ -10,13 +10,22 @@ namespace Csharp_Picturegraphik
     class Converter
     {
         private readonly Bitmap _bitmap;
+        private readonly char[] asciitableRev = { '@', '#', 'S', '%', '?', '*','+', ':', ',', '.' };
         private readonly char[] asciitable = { '.', ',', ':', '+', '*', '?', '%', 'S', '#', '@' };
         public Converter(Bitmap bitmap)
         {
             _bitmap = bitmap;
         }
-
+        public char[][] ConvertRev()
+        {
+            return Convert(asciitableRev);
+        }
         public char[][] Convert()
+        {
+            return Convert(asciitable);
+        }
+
+        public char[][] Convert(char [] asciitable)
         {
             var result = new char[_bitmap.Height][];
            
